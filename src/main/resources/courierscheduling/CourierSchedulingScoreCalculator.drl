@@ -1,0 +1,14 @@
+package courierscheduling;
+    dialect "java"
+
+import domain.Zone;
+import org.optaplanner.core.api.score.buildin.bendable.BendableScoreHolder;
+
+global BendableScoreHolder scoreHolder;
+
+rule "test run"
+    when
+        Zone($volume : volume, $volume.collectNum == 10)
+    then
+        scoreHolder.addSoftConstraintMatch(kcontext, 0, 1);
+end
